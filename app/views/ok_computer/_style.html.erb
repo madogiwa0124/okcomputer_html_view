@@ -1,39 +1,155 @@
 <style>
-  body {
-    margin: 20px;
+  :root {
+    --ok-bg: #f5f6f8;
+    --ok-surface: #ffffff;
+    --ok-border: #e5e7eb;
+    --ok-text: #1f2430;
+    --ok-text-muted: #6b7280;
+    --ok-green: #15803d;
+    --ok-green-bg: #ecfdf3;
+    --ok-red: #dc2626;
+    --ok-red-bg: #fef2f2;
+    --ok-radius: 12px;
   }
 
-  .status span.faild {
-    color: #FF5555;
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ok-bg: #0f1115;
+      --ok-surface: #171a21;
+      --ok-border: #272b35;
+      --ok-text: #e5e7eb;
+      --ok-text-muted: #8b93a3;
+      --ok-green: #34d399;
+      --ok-green-bg: rgba(52, 211, 153, 0.12);
+      --ok-red: #f87171;
+      --ok-red-bg: rgba(248, 113, 113, 0.14);
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 40px 24px;
+    background: var(--ok-bg);
+    color: var(--ok-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1 {
+    max-width: 960px;
+    margin: 0 auto 20px;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h2.status {
+    max-width: 960px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ok-text-muted);
+  }
+
+  .status span.faild,
+  .status span.failed {
+    color: var(--ok-red);
+    background: var(--ok-red-bg);
   }
 
   .status span.passed {
-    color: #55FF55;
+    color: var(--ok-green);
+    background: var(--ok-green-bg);
+  }
+
+  .status span.faild,
+  .status span.failed,
+  .status span.passed {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
   }
 
   table {
-    border-collapse:  collapse;
-    width:  100%;
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--ok-surface);
+    border: 1px solid var(--ok-border);
+    border-radius: var(--ok-radius);
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
   }
 
-  thead {
-    background-color: #CCCCCC;
+  th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ok-text-muted);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--ok-border);
   }
 
-  th,td {
-    border: solid 1px #000000;
-    padding: 10px;
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--ok-border);
+    font-size: 14px;
+    vertical-align: top;
   }
 
-  tr.failed {
-    background-color: #FFCCCC;
+  tbody tr:last-child td {
+    border-bottom: none;
   }
 
-  tr.passed {
-    background-color: #EEFFEE;
+  tbody tr:hover {
+    background: var(--ok-bg);
   }
 
-  td.registrant_name, td.passfail, td.time {
-    text-align: center;
+  td.registrant_name {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  td.passfail {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  tr.failed td.passfail {
+    color: var(--ok-red);
+  }
+
+  tr.passed td.passfail {
+    color: var(--ok-green);
+  }
+
+  td.message {
+    color: var(--ok-text-muted);
+  }
+
+  td.time {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--ok-text-muted);
+    white-space: nowrap;
   }
 </style>
