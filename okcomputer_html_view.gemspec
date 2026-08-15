@@ -19,5 +19,5 @@ Gem::Specification.new do |spec|
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.add_dependency "okcomputer", "~> 1.18.4"
+  spec.add_dependency "okcomputer", ">= 1.19.2"
 end

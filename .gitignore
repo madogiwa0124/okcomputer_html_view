@@ -13,3 +13,4 @@
 vendor
 
 spec/dummy/log
+Gemfile.lock
